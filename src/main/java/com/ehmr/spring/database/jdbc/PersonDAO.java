@@ -1,8 +1,8 @@
 package com.ehmr.spring.database.jdbc;
 
 import com.ehmr.spring.database.model.Person;
+import com.ehmr.spring.database.rowmappers.PersonRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -18,12 +18,12 @@ public class PersonDAO {
 
     public List<Person> findAll() {
         return jdbcTemplate.query("select * from person",
-                new BeanPropertyRowMapper<>(Person.class));
+                new PersonRowMapper());
     }
 
     public Person findById(int id) {
-        return jdbcTemplate.queryForObject("select * from person where id=?",
-                new BeanPropertyRowMapper<>(Person.class), id);
+        return (Person) jdbcTemplate.queryForObject("select * from person where id=?",
+                new PersonRowMapper(), id);
     }
 
     public int insert(Person person) {
