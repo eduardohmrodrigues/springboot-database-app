@@ -25,7 +25,7 @@ public class SpringJpaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        logger.info("FindAll: {}", personDAO.findAll());
+        logger.info("FindAll: {}", personJpaRepository.findAll());
         logger.info("Id 10001: {}", personJpaRepository.findById(10001));
         personJpaRepository.deleteById(10002);
         logger.info("Insert New Person: {}", personJpaRepository.upsert(new Person("Bjorn", "Sweden", new Date())));

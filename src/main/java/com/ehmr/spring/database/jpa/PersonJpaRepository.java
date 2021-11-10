@@ -6,7 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -14,6 +17,11 @@ public class PersonJpaRepository {
 
     @PersistenceContext
     EntityManager entityManager;
+
+    public List<Person> findAll() {
+        Query namedQuery = entityManager.createNamedQuery("find_all_people");
+        return namedQuery.getResultList();
+    }
 
     public Person findById(int id) {
         return entityManager.find(Person.class, id);
