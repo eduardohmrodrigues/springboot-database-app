@@ -29,6 +29,6 @@ public class SpringJdbcApplication implements CommandLineRunner {
 		logger.info("Id 10001: {}", personDAO.findById(10001));
 		logger.info("Delete 10003. Number of people deleted: {}", personDAO.deleteById(10003));
 		logger.info("Insert 10004: {}", personDAO.insert(new Person(10004, "Bjorn", "Sweden", new Date())));
-		logger.info("Updating 10003: {}", personDAO.update(new Person(10002, "James", "Denmark", new Date())));
+		logger.info("Updating 10002: {}", personDAO.update(new Person(10002, "Pieter", "Denmark", new Date())));
 	}
 }
